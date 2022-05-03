@@ -1,0 +1,93 @@
+{ config, pkgs, ... }:
+{
+  imports = [ ./emacs ];
+
+  home.packages = [
+    pkgs.jq
+    pkgs.ripgrep
+    pkgs.nix
+    pkgs.comma
+    pkgs.nix-index
+    pkgs.jdk
+    pkgs.sbt
+    pkgs.metals
+    pkgs.ammonite
+  ];
+
+  # Home Manager needs a bit of information about you and the
+  # paths it should manage.
+  home.username = "alexandre.moreno";
+  home.homeDirectory = "/Users/alexandre.moreno";
+
+  #home.file.".emacs.d/init.el".text = ''
+  #  (load "default.el")
+  #'';
+
+  # This value determines the Home Manager release that your
+  # configuration is compatible with. This helps avoid breakage
+  # when a new Home Manager release introduces backwards
+  # incompatible changes.
+  #
+  # You can update Home Manager without changing this value. See
+  # the Home Manager release notes for a list of state version
+  # changes in each release.
+  home.stateVersion = "22.05";
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
+  programs.git = {
+    enable = true;
+    userName = "Alexandre Moreno";
+    userEmail = "alexmorenocano@gmail.com";
+  };
+
+  programs.emacs = {
+    enable = true;
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    enableSyntaxHighlighting = true;
+    history = {
+      share = true;
+      size = 50000;
+    };
+
+    plugins = [
+      {
+        name = "zsh-autosuggestions";
+        src = pkgs.fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-autosuggestions";
+          rev = "v0.6.3";
+          sha256 = "1h8h2mz9wpjpymgl2p7pc146c1jgb3dggpvzwm9ln3in336wl95c";
+        };
+      }
+      {
+        name = "zsh-syntax-highlighting";
+        src = pkgs.fetchFromGitHub {
+          owner = "zsh-users";
+          repo = "zsh-syntax-highlighting";
+          rev = "be3882aeb054d01f6667facc31522e82f00b5e94";
+          sha256 = "0w8x5ilpwx90s2s2y56vbzq92ircmrf0l5x8hz4g1nx3qzawv6af";
+        };
+      }
+    ];
+
+    sessionVariables = rec {
+      EDITOR = "emacsclient -c";
+      VISUAL = EDITOR;
+      GIT_EDITOR = EDITOR;
+      PATH = "$HOME/.emacs.d/bin:$HOME/bin:$PATH";
+    };
+
+  };
+
+  programs.ssh = {
+    enable = true;
+  };
+
+}
