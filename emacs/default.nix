@@ -1,28 +1,24 @@
 { config, lib, pkgs, ... }:
+{
+  home.file.".doom.d" = {                       # Get Doom Emacs
+    source = ./.doom.d;                         # Sets up symlink name ".doom.d" for file "doom.d"
+    recursive = true;                           # Allow symlinking a directory
+    onChange = ''
+        DOOM="$HOME/.emacs.d"
 
-let
-  doom-emacs = pkgs.callPackage (builtins.fetchTarball {
-    url = https://github.com/nix-community/nix-doom-emacs/archive/master.tar.gz;
-  }) {
-    doomPrivateDir = ./.doom.d;
+        if [ ! -d "$DOOM" ]; then
+          git clone --depth=1 https://github.com/doomemacs/doom-emacs.git $DOOM
+          yes | $DOOM/bin/doom install
+          rm -r $HOME/.doom.d
+          ln -s $HOME/nix-config/emacs/.doom.d $HOME/.doom.d
+          $DOOM/bin/doom sync
+        else
+          $DOOM/bin/doom sync
+        fi
+      '';
+  };
 
-    # Use the latest emacs-overlay
-    dependencyOverrides = {
-      "emacs-overlay" = (builtins.fetchTarball {
-          url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-      });
-    };
-    # Look at Issue #394
-    emacsPackagesOverlay = self: super: {
-      gitignore-mode = pkgs.emacsPackages.git-modes;
-      gitconfig-mode = pkgs.emacsPackages.git-modes;
-    };
-
-    extraPackages = epkgs : [epkgs.vterm];
-  }; in {
-  home.packages = [ doom-emacs ];
-
-  #home.file.".emacs.d/init.el".text = ''
-  #  (load "default.el")
-  #'';
+  programs = {
+    emacs.enable = true;
+  };
 }

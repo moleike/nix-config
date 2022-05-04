@@ -2,26 +2,23 @@
 {
   imports = [ ./emacs ];
 
-  home.packages = [
-    pkgs.jq
-    pkgs.ripgrep
-    pkgs.nix
-    pkgs.comma
-    pkgs.nix-index
-    pkgs.jdk
-    pkgs.sbt
-    pkgs.metals
-    pkgs.ammonite
+  home.packages = with pkgs; [
+    jq
+    ripgrep
+    nix
+    comma
+    nix-index
+    jdk
+    sbt
+    metals
+    ammonite
+    hyperfine
   ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "alexandre.moreno";
   home.homeDirectory = "/Users/alexandre.moreno";
-
-  #home.file.".emacs.d/init.el".text = ''
-  #  (load "default.el")
-  #'';
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -42,7 +39,11 @@
     userEmail = "alexmorenocano@gmail.com";
   };
 
-  programs.emacs = {
+  #programs.emacs = {
+  #  enable = true;
+  #};
+
+  programs.direnv = {
     enable = true;
   };
 
@@ -82,6 +83,7 @@
       VISUAL = EDITOR;
       GIT_EDITOR = EDITOR;
       PATH = "$HOME/.emacs.d/bin:$HOME/bin:$PATH";
+      NIX_PATH = "$HOME/.nix-defexpr/channels:$NIX_PATH";
     };
 
   };
