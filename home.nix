@@ -83,7 +83,6 @@
       VISUAL = EDITOR;
       GIT_EDITOR = EDITOR;
       PATH = "$HOME/.emacs.d/bin:$HOME/bin:$PATH";
-      NIX_PATH = "$HOME/.nix-defexpr/channels:$NIX_PATH";
     };
 
   };
