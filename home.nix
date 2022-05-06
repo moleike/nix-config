@@ -1,6 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
+with pkgs;
 {
-  imports = [ ./emacs ];
+  imports = [
+    ./emacs
+    ./modules/ls-colors.nix
+  ];
 
   home.packages = with pkgs; [
     jq
@@ -33,15 +37,15 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
+
   programs.git = {
     enable = true;
     userName = "Alexandre Moreno";
     userEmail = "alexmorenocano@gmail.com";
   };
-
-  #programs.emacs = {
-  #  enable = true;
-  #};
 
   programs.direnv = {
     enable = true;
@@ -55,7 +59,9 @@
     history = {
       share = true;
       size = 50000;
+      save = 50000;
     };
+    shellAliases = import ./aliases.nix;
 
     plugins = [
       {
