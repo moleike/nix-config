@@ -17,6 +17,8 @@ with pkgs;
     metals
     ammonite
     hyperfine
+    fira-code
+    fira-code-symbols
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -33,6 +35,8 @@ with pkgs;
   # the Home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "22.05";
+
+  fonts.fontconfig.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -95,6 +99,34 @@ with pkgs;
 
   programs.ssh = {
     enable = true;
+  };
+
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      env.TERM = "xterm-256color";
+      window = {
+        title = "Terminal";
+        startup_mode = "Maximized";
+        decorations = "full";
+        opacity = 0.95;
+      };
+
+      font = {
+        size = 18.0;
+
+        normal.family = "Fira Code";
+        normal.style = "Medium";
+
+        bold.family = "Fira Code";
+        bold.style = "Bold";
+
+        italic.family = "Fira Code";
+        italic.style = "Light Italic";
+      };
+
+      cursor.style = "Block";
+    };
   };
 
 }
