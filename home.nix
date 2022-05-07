@@ -102,6 +102,10 @@ with pkgs;
     enable = true;
   };
 
+  programs.starship = {
+    enable = true;
+  };
+
   programs.alacritty = {
     enable = true;
     settings = {
