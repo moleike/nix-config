@@ -2,9 +2,9 @@
 with pkgs;
 {
   imports = [
-    ./emacs
+    ./modules/emacs
     ./modules/ls-colors.nix
-    ./modules/alacritty.nix
+    ./modules/alacritty
   ];
 
   home.packages = with pkgs; [
