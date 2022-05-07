@@ -4,6 +4,7 @@ with pkgs;
   imports = [
     ./emacs
     ./modules/ls-colors.nix
+    ./modules/alacritty.nix
   ];
 
   home.packages = with pkgs; [
@@ -105,6 +106,7 @@ with pkgs;
     enable = true;
     settings = {
       env.TERM = "xterm-256color";
+      live_config_reload = true;
       window = {
         title = "Terminal";
         startup_mode = "Maximized";
@@ -126,6 +128,8 @@ with pkgs;
       };
 
       cursor.style = "Block";
+
+      import = [ "${config.home.homeDirectory}/colors.yml" ];
     };
   };
 
