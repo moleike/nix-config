@@ -61,6 +61,7 @@ with pkgs;
     enableAutosuggestions = true;
     enableCompletion = true;
     enableSyntaxHighlighting = true;
+    defaultKeymap = "viins";
     history = {
       share = true;
       size = 50000;
