@@ -10,7 +10,7 @@
           git clone --depth=1 https://github.com/doomemacs/doom-emacs.git $DOOM
           yes | $DOOM/bin/doom install
           rm -r $HOME/.doom.d
-          ln -s $HOME/nix-config/emacs/.doom.d $HOME/.doom.d
+          ln -s $HOME/nix-config/modules/emacs/.doom.d $HOME/.doom.d
           $DOOM/bin/doom sync
         else
           $DOOM/bin/doom sync
@@ -18,7 +18,4 @@
       '';
   };
 
-  programs = {
-    emacs.enable = true;
-  };
 }

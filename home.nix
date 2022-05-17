@@ -37,13 +37,15 @@ with pkgs;
   # changes in each release.
   home.stateVersion = "22.05";
 
+  xdg.enable = true;
+
   fonts.fontconfig.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  nixpkgs.config = {
-    allowUnfree = true;
+  programs = {
+    emacs.enable = true;
   };
 
   programs.git = {
@@ -56,45 +58,40 @@ with pkgs;
     enable = true;
   };
 
+  programs.tmux = {
+    enable = true;
+    keyMode = "vi";
+    customPaneNavigationAndResize = true;
+    extraConfig = ''
+      unbind C-o
+      set -g prefix C-b
+    '';
+  };
+
+
   programs.zsh = {
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
     enableSyntaxHighlighting = true;
-    defaultKeymap = "viins";
     history = {
       share = true;
       size = 50000;
       save = 50000;
     };
     shellAliases = import ./aliases.nix;
-
-    plugins = [
-      {
-        name = "zsh-autosuggestions";
-        src = pkgs.fetchFromGitHub {
-          owner = "zsh-users";
-          repo = "zsh-autosuggestions";
-          rev = "v0.6.3";
-          sha256 = "1h8h2mz9wpjpymgl2p7pc146c1jgb3dggpvzwm9ln3in336wl95c";
-        };
-      }
-      {
-        name = "zsh-syntax-highlighting";
-        src = pkgs.fetchFromGitHub {
-          owner = "zsh-users";
-          repo = "zsh-syntax-highlighting";
-          rev = "be3882aeb054d01f6667facc31522e82f00b5e94";
-          sha256 = "0w8x5ilpwx90s2s2y56vbzq92ircmrf0l5x8hz4g1nx3qzawv6af";
-        };
-      }
-    ];
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "tmux" ];
+    };
 
     sessionVariables = rec {
       EDITOR = "emacsclient -c";
       VISUAL = EDITOR;
       GIT_EDITOR = EDITOR;
       PATH = "$HOME/.emacs.d/bin:$HOME/bin:$PATH";
+      ZSH_TMUX_AUTOSTART = true;
+      ZSH_TMUX_CONFIG = "$XDG_CONFIG_HOME/tmux/tmux.conf";
     };
 
   };
@@ -103,14 +100,14 @@ with pkgs;
     enable = true;
   };
 
-  programs.starship = {
-    enable = true;
-  };
+  # programs.starship = {
+  #   enable = true;
+  # };
 
   programs.alacritty = {
     enable = true;
     settings = {
-      env.TERM = "xterm-256color";
+      # env.TERM = "xterm-256color";
       live_config_reload = true;
       window = {
         title = "Terminal";
@@ -133,6 +130,11 @@ with pkgs;
       };
 
       cursor.style = "Block";
+      key_bindings = [{
+        key = "Return";
+        mods = "Control|Shift";
+        action = "SpawnNewInstance";
+      }];
 
       import = [ "${config.home.homeDirectory}/colors.yml" ];
     };
