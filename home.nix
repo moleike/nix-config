@@ -10,22 +10,32 @@ with pkgs;
   home.packages = with pkgs; [
     jq
     ripgrep
+    # httpie # Like curl but more user friendly
+    ngrok # expose local HTTP stuff publicly
+    podman # docker alternative
     nix
     comma
     nix-index
     jdk
-    sbt
+    sbt # scala build tool
     metals
     ammonite
     hyperfine
     fira-code
     fira-code-symbols
+    awscli # Amazon Web Services CLI
+    kubectl # Kubernetes CLI tool
+    tokei # Handy tool to see lines of code by language
   ];
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "alexandre.moreno";
   home.homeDirectory = "/Users/alexandre.moreno";
+
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
