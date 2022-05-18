@@ -70,11 +70,13 @@ with pkgs;
 
   programs.tmux = {
     enable = true;
+    prefix = "C-b";
     keyMode = "vi";
+    reverseSplit = true;
     customPaneNavigationAndResize = true;
     extraConfig = ''
-      unbind C-o
-      set -g prefix C-b
+      bind -T copy-mode-vi v send -X begin-selection
+      bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
     '';
   };
 
