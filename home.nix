@@ -12,7 +12,7 @@ with pkgs;
     ripgrep
     # httpie # Like curl but more user friendly
     ngrok # expose local HTTP stuff publicly
-    podman # docker alternative
+    # podman # docker alternative
     nix
     comma
     nix-index
