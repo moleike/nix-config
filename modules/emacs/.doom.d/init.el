@@ -61,7 +61,7 @@
        ;;parinfer          ; turn lisp into python, sort of
        ;;rotate-text       ; cycle region at point between text candidates
        snippets          ; my elves. They type so I don't have to
-       ;;word-wrap         ; soft wrapping with language-aware indent
+       word-wrap         ; soft wrapping with language-aware indent
 
        :emacs
        dired             ; making dired pretty [functional]
@@ -128,11 +128,11 @@
        (haskell +lsp)      ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
-       json              ; At least it ain't XML
-       ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
-       javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       json                ; At least it ain't XML
+       (java +lsp)         ; the poster child for carpal tunnel syndrome
+       javascript          ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
-       kotlin            ; a better, slicker Java(Script)
+       kotlin              ; a better, slicker Java(Script)
        ;;latex             ; writing papers in Emacs has never been so fun
        ;;lean
        ;;factor
@@ -154,7 +154,7 @@
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       ;;python            ; beautiful is better than ugly
+       python              ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6

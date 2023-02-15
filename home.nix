@@ -72,7 +72,7 @@ with pkgs;
         "https://github.com/nqcentral/"
         "git@github.com:nqcentral/"
       ];
-      includeIf."gitdir:~/Development/".path = "~/Development/.gitconfig";
+      includeIf."gitdir:~/Playground/".path = "~/Playground/.gitconfig";
     };
   };
 

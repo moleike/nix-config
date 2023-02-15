@@ -1,4 +1,4 @@
-# hosts/YourHostName/default.nix
+# hosts/netquest/default.nix
 { pkgs, lib, ... }:
 {
 
