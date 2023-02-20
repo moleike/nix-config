@@ -9,6 +9,8 @@
 (global-visual-line-mode t)
 
 (add-hook! 'emacs-startup-hook #'doom-init-ui-h)
+
+;; pin eclipse.jdt.ls (newer versions require java 11)
 (setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
 
 ;; org-mode
