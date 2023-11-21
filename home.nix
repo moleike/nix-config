@@ -15,7 +15,6 @@ with pkgs;
     nix
     comma
     nix-index
-    openjdk8
     maven
     coursier
     sbt
@@ -30,6 +29,8 @@ with pkgs;
     zstd
     git-credential-1password
     fontconfig
+    pandoc
+    httpie
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -72,6 +73,10 @@ with pkgs;
         "https://github.com/nqcentral/"
         "git@github.com:nqcentral/"
       ];
+      url."ssh://git@github.com/amoreno-netquest/".insteadOf = [
+        "https://github.com/amoreno-netquest/"
+        "git@github.com:amoreno-netquest/"
+      ];
       includeIf."gitdir:~/Playground/".path = "~/Playground/.gitconfig";
     };
   };
@@ -84,17 +89,19 @@ with pkgs;
 
   programs.direnv = {
     enable = true;
+    nix-direnv.enable = true;
   };
 
   programs.tmux = {
     enable = true;
     prefix = "C-b";
     keyMode = "vi";
-    reverseSplit = true;
     customPaneNavigationAndResize = true;
     extraConfig = ''
       bind -T copy-mode-vi v send -X begin-selection
       bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
+      bind '"' split-window -h
+      bind '=' split-window -v
     '';
   };
 
@@ -129,6 +136,11 @@ with pkgs;
 
   programs.ssh = {
     enable = true;
+    matchBlocks = {
+      "*.netquest-apps.com" = {
+        user = "amoreno";
+      };
+    };
   };
 
   # programs.starship = {
