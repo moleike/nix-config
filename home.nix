@@ -30,7 +30,7 @@ with pkgs;
     git-credential-1password
     fontconfig
     pandoc
-    httpie
+    trivy
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -50,7 +50,7 @@ with pkgs;
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "22.05";
+  home.stateVersion = "23.11";
 
   xdg.enable = true;
 
@@ -83,13 +83,17 @@ with pkgs;
 
   programs.gh = {
     enable = true;
-    enableGitCredentialHelper = true;
+    gitCredentialHelper.enable = true;
   };
 
 
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    config.global = {
+      load_dotenv = true;
+      strict_env = true;
+    };
   };
 
   programs.tmux = {
@@ -110,7 +114,7 @@ with pkgs;
     enable = true;
     enableAutosuggestions = true;
     enableCompletion = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     history = {
       share = true;
       size = 50000;

@@ -49,6 +49,7 @@
       "spotify"
       "whalebird"
       "wireshark"
+      "httpie"
     ];
   };
 
