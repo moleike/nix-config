@@ -23,7 +23,6 @@ with pkgs;
     hyperfine
     fira-code
     fira-code-symbols
-    awscli
     kubectl
     tokei
     zstd
@@ -59,6 +58,15 @@ with pkgs;
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  programs.password-store = {
+    enable = true;
+    package = pkgs.pass;
+  };
+
+  programs.gpg = {
+    enable = true;
+  };
+
   programs.git = {
     enable = true;
     userName = "Alexandre Moreno";
@@ -81,11 +89,31 @@ with pkgs;
     };
   };
 
+  programs.awscli = {
+    enable = true;
+    package = pkgs.awscli2;
+    settings = {
+      default = {
+        region = "us-east-1";
+        output = "json";
+      };
+    };
+    credentials = {
+      default = {
+        credential_process = "${pkgs.pass}/bin/pass show aws";
+      };
+    };
+  };
+
+  programs.browserpass = {
+    enable = true;
+    browsers = [ "chrome" ];
+  };
+
   programs.gh = {
     enable = true;
     gitCredentialHelper.enable = true;
   };
-
 
   programs.direnv = {
     enable = true;
@@ -108,7 +136,6 @@ with pkgs;
       bind '=' split-window -v
     '';
   };
-
 
   programs.zsh = {
     enable = true;
