@@ -30,6 +30,7 @@ with pkgs;
     fontconfig
     pandoc
     trivy
+    hugo
   ];
 
   # Home Manager needs a bit of information about you and the
@@ -128,6 +129,7 @@ with pkgs;
     enable = true;
     prefix = "C-b";
     keyMode = "vi";
+    historyLimit = 50000;
     customPaneNavigationAndResize = true;
     extraConfig = ''
       bind -T copy-mode-vi v send -X begin-selection

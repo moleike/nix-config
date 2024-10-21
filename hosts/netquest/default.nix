@@ -50,6 +50,11 @@
       "whalebird"
       "wireshark"
       "httpie"
+      "jdk-mission-control"
+    ];
+
+    brews = [
+      "kitlangton/tap/scala-update"
     ];
   };
 
