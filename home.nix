@@ -31,6 +31,7 @@ with pkgs;
     pandoc
     trivy
     hugo
+    coq
   ];
 
   # Home Manager needs a bit of information about you and the

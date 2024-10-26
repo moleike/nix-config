@@ -1,7 +1,7 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here
-(setq doom-font (font-spec :family "Menlo" :size 16))
+(setq doom-font (font-spec :family "Fira Code" :size 18))
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq display-line-numbers-type 'relative)
 (setq display-fill-column-indicator-mode t)
