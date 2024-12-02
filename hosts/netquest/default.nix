@@ -7,9 +7,17 @@
       home = "/Users/Alex.Moreno";
   };
 
+  # The platform the configuration will be used on.
+  # nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Make sure the nix daemon always runs
   services.nix-daemon.enable = true;
+
+  # zScaler root CA
+  nix.settings.ssl-cert-file = "/opt/zscaler.crt";
+  security.pki.certificates = [
+    "/opt/zscaler.crt"
+  ];
 
   nix.extraOptions = ''
     max-jobs = auto  # Allow building multiple derivations in parallel
@@ -51,6 +59,7 @@
       "wireshark"
       "httpie"
       "jdk-mission-control"
+      "visualvm"
     ];
 
     brews = [

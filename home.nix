@@ -26,7 +26,6 @@ with pkgs;
     kubectl
     tokei
     zstd
-    git-credential-1password
     fontconfig
     pandoc
     trivy
@@ -137,12 +136,15 @@ with pkgs;
       bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
       bind '"' split-window -h
       bind '=' split-window -v
+      set -g mouse on
     '';
   };
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion = {
+      enable = true;
+    };
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     history = {
