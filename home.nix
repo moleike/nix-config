@@ -31,6 +31,7 @@ with pkgs;
     trivy
     hugo
     coq
+    racket
   ];
 
   # Home Manager needs a bit of information about you and the
