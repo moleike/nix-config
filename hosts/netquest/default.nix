@@ -7,26 +7,20 @@
       home = "/Users/Alex.Moreno";
   };
 
+  system.stateVersion = 5;
+
   # The platform the configuration will be used on.
-  # nixpkgs.hostPlatform = "aarch64-darwin";
+  nixpkgs.hostPlatform = "aarch64-darwin";
 
   # Make sure the nix daemon always runs
   services.nix-daemon.enable = true;
 
   # zScaler root CA
-  nix.settings.ssl-cert-file = "/opt/zscaler.crt";
-  security.pki.certificates = [
-    "/opt/zscaler.crt"
-  ];
+  #nix.settings.ssl-cert-file = "/opt/zscaler.crt";
+  #security.pki.certificates = [
+  #  "/opt/zscaler.crt"
+  #];
 
-  nix.extraOptions = ''
-    max-jobs = auto  # Allow building multiple derivations in parallel
-    keep-outputs = false
-    # Allow fetching build results from the Lean Cachix cache
-    trusted-substituters = https://lean4.cachix.org/
-    trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= lean4.cachix.org-1:mawtxSxcaiWE24xCXXgh3qnvlTkyU7evRRnGeAhD4Wk=
-  '';
-  
   # if you use zsh (the default on new macOS installations),
   # you'll need to enable this so nix-darwin creates a zshrc sourcing needed environment changes
   programs.zsh.enable = true;
@@ -59,7 +53,6 @@
       "wireshark"
       "httpie"
       "jdk-mission-control"
-      "visualvm"
     ];
 
     brews = [

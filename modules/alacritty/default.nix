@@ -1,9 +1,9 @@
 { pkgs, ... }:
 let theme = pkgs.fetchgit {
-    url = "https://github.com/eendroroy/alacritty-theme";
-    rev = "567912a278cca356e8aa81ec748759c8e048d0ec";
-    sha256 = "cDhcdEDwdJeVoFr8NATZ43e/xhZ7N0mUnd1yfyfpq1I=";
+    url = "https://github.com/alacritty/alacritty-theme";
+    rev = "14794c3cc2dc1b4649f8b9b79a8833d2ce5bfd60";
+    sha256 = "mxmli6ZSm+90Jrwm9fju0sAstNZgBEx4hSaWigs6rWc=";
     };
 in {
-  home.file."colors.yml".text = builtins.readFile "${theme}/themes/nord.yaml";
+  home.file."colors.toml".text = builtins.readFile "${theme}/themes/afterglow.toml";
 }

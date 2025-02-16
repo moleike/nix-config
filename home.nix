@@ -142,9 +142,7 @@ with pkgs;
 
   programs.zsh = {
     enable = true;
-    autosuggestion = {
-      enable = true;
-    };
+    autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
     history = {
@@ -186,14 +184,25 @@ with pkgs;
   programs.alacritty = {
     enable = true;
     settings = {
-      # env.TERM = "xterm-256color";
-      live_config_reload = true;
-      window = {
-        title = "Terminal";
-        startup_mode = "Maximized";
-        decorations = "full";
-        opacity = 0.95;
+      general = {
+        live_config_reload = true;
+        import = [ "${config.home.homeDirectory}/colors.toml" ];
       };
+
+      terminal.shell.program = "${pkgs.tmux}/bin/tmux";
+
+      window = {
+        dynamic_title = true;
+        startup_mode = "Maximized";
+        decorations = "Buttonless";
+        opacity = 0.90;
+      };
+
+      scrolling = {
+        history = 50000;
+      };
+
+      cursor.style = "Block";
 
       font = {
         size = 18.0;
@@ -208,14 +217,6 @@ with pkgs;
         italic.style = "Light Italic";
       };
 
-      cursor.style = "Block";
-      key_bindings = [{
-        key = "Return";
-        mods = "Control|Shift";
-        action = "SpawnNewInstance";
-      }];
-
-      import = [ "${config.home.homeDirectory}/colors.yml" ];
     };
   };
 
