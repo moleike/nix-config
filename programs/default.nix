@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./tmux
+    ./zsh
+    ./alacritty
+  ];
+}

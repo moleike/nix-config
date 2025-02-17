@@ -4,7 +4,7 @@ with pkgs;
   imports = [
     ./modules/emacs
     ./modules/ls-colors.nix
-    ./modules/alacritty
+    ./programs
   ];
 
   home.packages = with pkgs; [
@@ -126,49 +126,6 @@ with pkgs;
     };
   };
 
-  programs.tmux = {
-    enable = true;
-    prefix = "C-b";
-    keyMode = "vi";
-    historyLimit = 50000;
-    customPaneNavigationAndResize = true;
-    extraConfig = ''
-      bind -T copy-mode-vi v send -X begin-selection
-      bind -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "pbcopy"
-      bind '"' split-window -h
-      bind '=' split-window -v
-      set -g mouse on
-    '';
-  };
-
-  programs.zsh = {
-    enable = true;
-    autosuggestion.enable = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-    history = {
-      share = true;
-      size = 50000;
-      save = 50000;
-    };
-    shellAliases = import ./aliases.nix;
-    oh-my-zsh = {
-      enable = true;
-      theme = "lambda";
-      plugins = [
-        "tmux"
-      ];
-    };
-    sessionVariables = rec {
-      EDITOR = "emacsclient -c";
-      VISUAL = EDITOR;
-      GIT_EDITOR = EDITOR;
-      PATH = "$HOME/.emacs.d/bin:$HOME/bin:$PATH";
-      ZSH_TMUX_AUTOSTART = true;
-      ZSH_TMUX_CONFIG = "$XDG_CONFIG_HOME/tmux/tmux.conf";
-    };
-  };
-
   programs.ssh = {
     enable = true;
     matchBlocks = {
@@ -182,43 +139,5 @@ with pkgs;
   #   enable = true;
   # };
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      general = {
-        live_config_reload = true;
-        import = [ "${config.home.homeDirectory}/colors.toml" ];
-      };
-
-      terminal.shell.program = "${pkgs.tmux}/bin/tmux";
-
-      window = {
-        dynamic_title = true;
-        startup_mode = "Maximized";
-        decorations = "Buttonless";
-        opacity = 0.90;
-      };
-
-      scrolling = {
-        history = 50000;
-      };
-
-      cursor.style = "Block";
-
-      font = {
-        size = 18.0;
-
-        normal.family = "Fira Code";
-        normal.style = "Medium";
-
-        bold.family = "Fira Code";
-        bold.style = "Bold";
-
-        italic.family = "Fira Code";
-        italic.style = "Light Italic";
-      };
-
-    };
-  };
 
 }
