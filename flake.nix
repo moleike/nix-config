@@ -15,8 +15,9 @@
       M-Y3NWTMF3DL = nix-darwin.lib.darwinSystem {
         # you can have multiple darwinConfigurations per flake, one per hostname
         system = "aarch64-darwin";
-        modules = [ 
-          ./hosts/netquest/default.nix
+        modules = [
+          ./homebrew
+          ./hosts/netquest
           mac-app-util.darwinModules.default
           home-manager.darwinModules.home-manager
           {
