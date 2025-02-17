@@ -1,11 +1,7 @@
 { config, pkgs, lib, ... }:
 with pkgs;
 {
-  imports = [
-    ./modules/emacs
-    ./modules/ls-colors.nix
-    ./programs
-  ];
+  imports = [ ./programs ];
 
   home.packages = with pkgs; [
     jq
@@ -69,28 +65,6 @@ with pkgs;
     enable = true;
   };
 
-  programs.git = {
-    enable = true;
-    userName = "Alexandre Moreno";
-    userEmail = "alexmorenocano@gmail.com";
-    delta.enable = true;
-    extraConfig = {
-      color.ui = true;
-      pull.rebase = true;
-      merge.conflictstyle = "diff3";
-      github.user = "moleike";
-      url."ssh://git@github.com/nqcentral/".insteadOf = [
-        "https://github.com/nqcentral/"
-        "git@github.com:nqcentral/"
-      ];
-      url."ssh://git@github.com/amoreno-netquest/".insteadOf = [
-        "https://github.com/amoreno-netquest/"
-        "git@github.com:amoreno-netquest/"
-      ];
-      includeIf."gitdir:~/Playground/".path = "~/Playground/.gitconfig";
-    };
-  };
-
   programs.awscli = {
     enable = true;
     package = pkgs.awscli2;
@@ -115,15 +89,6 @@ with pkgs;
   programs.gh = {
     enable = true;
     gitCredentialHelper.enable = true;
-  };
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    config.global = {
-      load_dotenv = true;
-      strict_env = true;
-    };
   };
 
   programs.ssh = {
