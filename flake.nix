@@ -33,7 +33,7 @@
             home-manager.useUserPackages = true;
             home-manager.users."Alex.Moreno" = {
               imports = [
-                ./home.nix
+                ./home
                 mac-app-util.homeManagerModules.default
               ];
             };
