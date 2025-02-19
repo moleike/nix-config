@@ -10,14 +10,15 @@
       mac-app-util.url = "github:hraban/mac-app-util";
   };
   
-  outputs = { self, nixpkgs, home-manager, nix-darwin, mac-app-util, ... }: {
-    darwinConfigurations = rec {
-      M-Y3NWTMF3DL = nix-darwin.lib.darwinSystem {
-        # you can have multiple darwinConfigurations per flake, one per hostname
-        system = "aarch64-darwin";
+  outputs = inputs: with inputs; rec {
+    darwinConfigurations =
+      let configure = hostname: system: nix-darwin.lib.darwinSystem {
+        inherit system;
+        specialArgs = { inherit hostname inputs; };
+
         modules = [
           ./homebrew
-          ./hosts/netquest
+          ./hosts/${hostname}
           mac-app-util.darwinModules.default
           home-manager.darwinModules.home-manager
           {
@@ -29,18 +30,21 @@
               };
             };
 
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users."Alex.Moreno" = {
-              imports = [
-                ./home
-                mac-app-util.homeManagerModules.default
-              ];
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users."Alex.Moreno" = {
+                imports = [
+                  ./home
+                  ./hosts/${hostname}/home.nix
+                  mac-app-util.homeManagerModules.default
+                ];
+              };
             };
           }
         ];
-
-      };
-    };
+       }; in {
+         M-Y3NWTMF3DL = configure "netquest" "aarch64-darwin";
+       };
   };
 }

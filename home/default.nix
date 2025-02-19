@@ -93,11 +93,6 @@ with pkgs;
 
   programs.ssh = {
     enable = true;
-    matchBlocks = {
-      "*.netquest-apps.com" = {
-        user = "amoreno";
-      };
-    };
   };
 
   # programs.starship = {
