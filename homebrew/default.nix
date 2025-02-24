@@ -25,6 +25,7 @@
 
     brews = [
       "kitlangton/tap/scala-update"
+      "acl2"
     ];
   };
 }

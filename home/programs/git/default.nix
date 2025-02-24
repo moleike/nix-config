@@ -10,6 +10,7 @@
       merge.conflictstyle = "diff3";
       github.user = "moleike";
       includeIf."gitdir:~/Playground/".path = "~/Playground/.gitconfig";
+      http.sslVerify = true;
     };
   };
 }

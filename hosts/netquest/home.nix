@@ -11,6 +11,9 @@
        "https://github.com/amoreno-netquest/"
        "git@github.com:amoreno-netquest/"
      ];
+
+     # workaround to corporate firewall
+     http."https://git.savannah.gnu.org".sslcainfo = "/opt/zscaler.crt";
    };
 
   programs.ssh.matchBlocks = {
