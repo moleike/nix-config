@@ -1,6 +1,6 @@
 {
 
-  home.username = "Alex.Moreno";
+  home.username = "amoreno";
 
   programs.git.extraConfig = {
      url."ssh://git@github.com/nqcentral/".insteadOf = [
