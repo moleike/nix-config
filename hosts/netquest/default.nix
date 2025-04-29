@@ -2,9 +2,9 @@
 { pkgs, lib, ... }:
 {
 
-  users.users."Alex.Moreno" = {
-      name = "Alex.Moreno";
-      home = "/Users/Alex.Moreno";
+  users.users."amoreno" = {
+      name = "amoreno";
+      home = "/Users/amoreno";
   };
 
   system.stateVersion = 5;
