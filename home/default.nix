@@ -30,11 +30,6 @@ with pkgs;
     racket
   ];
 
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "Alex.Moreno";
-  #home.homeDirectory = "/Users/Alex.Moreno";
-
   nixpkgs.config = {
     allowUnfree = true;
   };
