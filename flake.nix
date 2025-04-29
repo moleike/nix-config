@@ -33,7 +33,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users."Alex.Moreno" = {
+              users."amoreno" = {
                 imports = [
                   ./home
                   ./hosts/${hostname}/home.nix
@@ -44,7 +44,7 @@
           }
         ];
        }; in {
-         M-Y3NWTMF3DL = configure "netquest" "aarch64-darwin";
+         ESM-Y3NWTMF3DL = configure "netquest" "aarch64-darwin";
        };
   };
 }
