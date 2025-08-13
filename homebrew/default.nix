@@ -2,7 +2,7 @@
   # MacOS native apps not in nixpkgs (Xcode can't be packaged with Nix)
   homebrew = {
     enable = true;
-    onActivation.autoUpdate = false;
+    onActivation.autoUpdate = true;
     # updates homebrew packages on activation,
     # can make darwin-rebuild much slower (otherwise i'd forget to do it ever though)
     casks = [
@@ -17,7 +17,6 @@
       "discord"
       "whatsapp"
       "spotify"
-      "whalebird"
       "wireshark"
       "httpie"
       "jdk-mission-control"

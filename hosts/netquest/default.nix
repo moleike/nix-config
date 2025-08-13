@@ -14,6 +14,12 @@
 
   # Make sure the nix daemon always runs
   services.nix-daemon.enable = true;
+  nix = {
+    package = pkgs.nix;
+    settings = {
+      "extra-experimental-features" = [ "nix-command" "flakes" ];
+    };
+  };
 
   # zScaler root CA
   #nix.settings.ssl-cert-file = "/opt/zscaler.crt";

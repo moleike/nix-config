@@ -23,7 +23,7 @@ in
         dynamic_title = true;
         startup_mode = "Maximized";
         decorations = "Buttonless";
-        opacity = 0.90;
+        opacity = 0.80;
       };
 
       scrolling = {

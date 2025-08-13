@@ -7,15 +7,17 @@ with pkgs;
     jq
     fd
     ripgrep
+    dive
     # ngrok
     nix
     comma
     nix-index
+    jdk17
     maven
     coursier
     sbt
     metals
-    ammonite
+    scala-cli
     hyperfine
     fira-code
     fira-code-symbols
@@ -28,6 +30,12 @@ with pkgs;
     hugo
     coq
     racket
+    (agda.withPackages [ agdaPackages.standard-library ])
+    (python3.withPackages (python-pkgs: with python-pkgs; [
+      python-lsp-server
+      pylsp-mypy
+    ]))
+
   ];
 
   nixpkgs.config = {
@@ -45,6 +53,10 @@ with pkgs;
   home.stateVersion = "23.11";
 
   xdg.enable = true;
+
+  home.file = {
+        "agda/defaults".text = "standard-library";
+      };
 
   fonts.fontconfig.enable = true;
 
