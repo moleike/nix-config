@@ -31,10 +31,13 @@ with pkgs;
     coq
     racket
     (agda.withPackages [ agdaPackages.standard-library ])
-    (python3.withPackages (python-pkgs: with python-pkgs; [
+    (python311.withPackages (python-pkgs: with python-pkgs; [
+      pytest
+      pylint
       python-lsp-server
       pylsp-mypy
     ]))
+    pipenv
 
   ];
 
