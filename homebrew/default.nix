@@ -20,6 +20,7 @@
       "wireshark"
       "httpie"
       "jdk-mission-control"
+      "lens"
     ];
 
     brews = [
