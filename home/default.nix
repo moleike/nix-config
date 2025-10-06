@@ -16,7 +16,7 @@ with pkgs;
     maven
     coursier
     sbt
-    metals
+    # metals
     scala-cli
     hyperfine
     fira-code
@@ -30,6 +30,9 @@ with pkgs;
     hugo
     coq
     racket
+    pipenv
+    nodejs_22
+    ispell
     (agda.withPackages [ agdaPackages.standard-library ])
     (python311.withPackages (python-pkgs: with python-pkgs; [
       pytest
@@ -37,8 +40,6 @@ with pkgs;
       python-lsp-server
       pylsp-mypy
     ]))
-    pipenv
-
   ];
 
   nixpkgs.config = {
