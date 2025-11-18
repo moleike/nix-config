@@ -9,11 +9,10 @@
 
   system.stateVersion = 5;
 
-  # The platform the configuration will be used on.
+  system.primaryUser = "amoreno";
+
   nixpkgs.hostPlatform = "aarch64-darwin";
 
-  # Make sure the nix daemon always runs
-  services.nix-daemon.enable = true;
   nix = {
     package = pkgs.nix;
     settings = {
@@ -27,15 +26,5 @@
   #  "/opt/zscaler.crt"
   #];
 
-  # if you use zsh (the default on new macOS installations),
-  # you'll need to enable this so nix-darwin creates a zshrc sourcing needed environment changes
   programs.zsh.enable = true;
-
-  #environment.systemPackages = [
-  # pkgs.python39Packages.pip
-  # pkgs.python39Packages.python-lsp-server
-  # pkgs.python39Packages.pylsp-mypy
-  #];
-
-
 }

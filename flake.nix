@@ -2,10 +2,10 @@
   description = "Alex's work/home laptop nixos config";
 
   inputs = {
-      nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-24.11-darwin;
-      home-manager.url = github:nix-community/home-manager/release-24.11;
+      nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-25.05-darwin;
+      home-manager.url = github:nix-community/home-manager/release-25.05;
       home-manager.inputs.nixpkgs.follows = "nixpkgs";
-      nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-24.11";
+      nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.05";
       nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
       mac-app-util.url = "github:hraban/mac-app-util";
   };

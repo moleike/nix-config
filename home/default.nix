@@ -7,16 +7,18 @@ with pkgs;
     jq
     fd
     ripgrep
+    semgrep
     dive
     # ngrok
     nix
     comma
     nix-index
     jdk17
+    rustup
     maven
     coursier
     sbt
-    # metals
+    metals
     scala-cli
     hyperfine
     fira-code
@@ -24,15 +26,15 @@ with pkgs;
     kubectl
     tokei
     zstd
+    ispell
     fontconfig
     pandoc
     trivy
     hugo
     coq
-    racket
+    racket-minimal
     pipenv
     nodejs_22
-    ispell
     (agda.withPackages [ agdaPackages.standard-library ])
     (python311.withPackages (python-pkgs: with python-pkgs; [
       pytest
@@ -40,6 +42,7 @@ with pkgs;
       python-lsp-server
       pylsp-mypy
     ]))
+    lean4
   ];
 
   nixpkgs.config = {
