@@ -1,4 +1,4 @@
 {
   ls = "ls --color=auto -F";
-  nixr = "darwin-rebuild switch --flake ~/nix-config";
+  nixr = "sudo darwin-rebuild switch --flake ~/nix-config";
 }
