@@ -6,11 +6,12 @@ with pkgs;
   home.packages = with pkgs; [
     jq
     fd
+    gh
     ripgrep
-    semgrep
     dive
     # ngrok
     nix
+    cachix
     comma
     nix-index
     jdk17
@@ -32,7 +33,7 @@ with pkgs;
     trivy
     hugo
     coq
-    racket-minimal
+    # racket-minimal
     pipenv
     nodejs_22
     (agda.withPackages [ agdaPackages.standard-library ])
@@ -41,6 +42,7 @@ with pkgs;
       pylint
       python-lsp-server
       pylsp-mypy
+      matplotlib
     ]))
     lean4
   ];

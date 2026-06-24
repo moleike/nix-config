@@ -13,6 +13,11 @@
 ;; pin eclipse.jdt.ls (newer versions require java 11)
 (setq lsp-java-jdt-download-url  "https://download.eclipse.org/jdtls/milestones/0.57.0/jdt-language-server-0.57.0-202006172108.tar.gz")
 
+(use-package! remark-mode
+  :commands remark-mode
+  :init
+  (set-popup-rule! "*remark browser*" :ttl nil))
+
 ;; org-mode
 ;;(setq org-directory "~/org/"
 ;;      org-agenda-files (list "~/org/"))

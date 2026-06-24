@@ -16,7 +16,8 @@
   nix = {
     package = pkgs.nix;
     settings = {
-      "extra-experimental-features" = [ "nix-command" "flakes" ];
+      trusted-users = [ "root" "amoreno" ];
+      extra-experimental-features = [ "nix-command" "flakes" ];
     };
   };
 

@@ -9,3 +9,7 @@
   :recipe (:host github
            :repo "leanprover-community/lean4-mode"
            :files ("*.el" "data")))
+
+(package! remark-mode
+  :recipe (:host github
+           :repo "torgeir/remark-mode.el"))
