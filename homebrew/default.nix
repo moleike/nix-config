@@ -13,6 +13,7 @@
       "zoom"
       "loom"
       "notion"
+      "google-chrome"
       "google-drive"
       "dbeaver-community"
       "discord"
