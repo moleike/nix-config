@@ -19,8 +19,8 @@
       "discord"
       "whatsapp"
       "spotify"
-      "wireshark"
-      "httpie"
+      "wireshark-app"
+      "httpie-desktop"
       "jdk-mission-control"
       "lens"
     ];

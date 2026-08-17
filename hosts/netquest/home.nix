@@ -2,7 +2,7 @@
 
   home.username = "amoreno";
 
-  programs.git.extraConfig = {
+  programs.git.settings = {
      url."ssh://git@github.com/nqcentral/".insteadOf = [
        "https://github.com/nqcentral/"
        "git@github.com:nqcentral/"
@@ -16,7 +16,7 @@
      http."https://git.savannah.gnu.org".sslcainfo = "/opt/zscaler.crt";
    };
 
-  programs.ssh.matchBlocks = {
+  programs.ssh.settings = {
     "*.netquest-apps.com" = {
       user = "amoreno";
     };

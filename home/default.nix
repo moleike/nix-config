@@ -1,5 +1,5 @@
 { config, pkgs, lib, ... }:
-with pkgs;
+
 {
   imports = [ ./programs ];
 
@@ -32,40 +32,34 @@ with pkgs;
     pandoc
     trivy
     hugo
-    coq
     # racket-minimal
-    pipenv
     nodejs_22
-    (agda.withPackages [ agdaPackages.standard-library ])
-    (python311.withPackages (python-pkgs: with python-pkgs; [
+    pipenv
+    (python312.withPackages (python-pkgs: with python-pkgs; [
       pytest
       pylint
       python-lsp-server
-      pylsp-mypy
       matplotlib
     ]))
+    # proof assistants
     lean4
+    coq
+    (agda.withPackages [ agdaPackages.standard-library ])
+    # agents
+    llm-agents.claude-code
+    llm-agents.codex
+    llm-agents.gemini-cli
   ];
 
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
-
   # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
-  #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
+  # configuration is compatible with.
   home.stateVersion = "23.11";
 
   xdg.enable = true;
 
   home.file = {
-        "agda/defaults".text = "standard-library";
-      };
+    "agda/defaults".text = "standard-library";
+  };
 
   fonts.fontconfig.enable = true;
 
@@ -75,6 +69,9 @@ with pkgs;
   programs.password-store = {
     enable = true;
     package = pkgs.pass;
+    settings = {
+      PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store";
+    };
   };
 
   programs.gpg = {
@@ -109,11 +106,6 @@ with pkgs;
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
   };
-
-  # programs.starship = {
-  #   enable = true;
-  # };
-
-
 }

@@ -1,4 +1,4 @@
-{ ... } :
+{ config, ... }:
 {
   imports = [
     ./dircolors.nix
@@ -30,5 +30,6 @@
       ZSH_TMUX_AUTOSTART = true;
       ZSH_TMUX_CONFIG = "$XDG_CONFIG_HOME/tmux/tmux.conf";
     };
+    dotDir = "${config.xdg.configHome}/zsh";
   };
 }

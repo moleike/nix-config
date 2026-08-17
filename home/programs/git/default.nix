@@ -1,10 +1,13 @@
 {
   programs.git = {
     enable = true;
-    userName = "Alexandre Moreno";
-    userEmail = "alexmorenocano@gmail.com";
-    delta.enable = true;
-    extraConfig = {
+
+    settings = {
+      user = {
+        name = "Alexandre Moreno";
+        email = "alexmorenocano@gmail.com";
+      };
+
       color.ui = true;
       pull.rebase = true;
       merge.conflictstyle = "diff3";
@@ -12,5 +15,10 @@
       includeIf."gitdir:~/Playground/".path = "~/Playground/.gitconfig";
       http.sslVerify = true;
     };
+  };
+
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
   };
 }
