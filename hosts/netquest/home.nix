@@ -7,6 +7,8 @@
       agda.enable = true;
       agents.enable = true;
       coq.enable = true;
+      haskell.enable = true;
+      java.enable = true;
       lean.enable = true;
       nodejs.enable = true;
       python.enable = true;
