@@ -4,8 +4,9 @@
     enable = true;
     onActivation.autoUpdate = true;
     onActivation.upgrade = true;
-    # updates homebrew packages on activation,
-    # can make darwin-rebuild much slower (otherwise i'd forget to do it ever though)
+    onActivation.cleanup = "zap";
+    enableZshIntegration = true;
+
     casks = [
       "slack"
       # "docker"
@@ -17,12 +18,13 @@
       "google-drive"
       "dbeaver-community"
       "discord"
-      "whatsapp"
+      # "whatsapp"
       "spotify"
       "wireshark-app"
       "httpie-desktop"
       "jdk-mission-control"
       "lens"
+      "racket"
     ];
 
     brews = [
