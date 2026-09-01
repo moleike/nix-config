@@ -7,6 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     mac-app-util.url = "github:hraban/mac-app-util";
     llm-agents.url = "github:numtide/llm-agents.nix";
   };
@@ -42,6 +43,7 @@
                   ./home
                   ./hosts/${hostname}/home.nix
                   mac-app-util.homeManagerModules.default
+                  nix-doom-emacs-unstraightened.hmModule
                 ];
               };
             };
