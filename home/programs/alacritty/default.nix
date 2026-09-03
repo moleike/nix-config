@@ -1,25 +1,30 @@
-{ config, pkgs, ... } :
+{ config, pkgs, ... }:
 let
   theme = pkgs.fetchgit {
     url = "https://github.com/alacritty/alacritty-theme";
     rev = "14794c3cc2dc1b4649f8b9b79a8833d2ce5bfd60";
     sha256 = "mxmli6ZSm+90Jrwm9fju0sAstNZgBEx4hSaWigs6rWc=";
   };
+  afterglow = builtins.fromTOML (builtins.readFile "${theme}/themes/afterglow.toml");
+
+  tmux-launcher = pkgs.writeShellScript "tmux-launcher" ''
+    exec ${pkgs.tmux}/bin/tmux attach 2>/dev/null || exec ${pkgs.tmux}/bin/tmux
+  '';
 in
 {
-  home.file."colors.toml".text = builtins.readFile "${theme}/themes/afterglow.toml";
-
   programs.alacritty = {
     enable = true;
     settings = {
       general = {
         live_config_reload = true;
-        import = [ "${config.home.homeDirectory}/colors.toml" ];
       };
 
-      terminal.shell.program = "${pkgs.tmux}/bin/tmux";
+      colors = afterglow.colors;
+
+      terminal.shell.program = "${tmux-launcher}";
 
       window = {
+        option_as_alt = "Both";
         dynamic_title = true;
         startup_mode = "Maximized";
         decorations = "Buttonless";
@@ -27,7 +32,7 @@ in
       };
 
       scrolling = {
-        history = 50000;
+        history = 10000;
       };
 
       cursor.style = "Block";
