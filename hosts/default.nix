@@ -9,7 +9,7 @@
     dock = {
       autohide = true;
       show-recents = false;
-      tilesize = 48;
+      tilesize = 52;
       mru-spaces = false;
     };
     finder = {
@@ -46,11 +46,14 @@
     settings = {
       trusted-users = [ "root" "amoreno" ];
       extra-experimental-features = [ "nix-command" "flakes" ];
-      substituters = lib.mkForce [
-        "https://cache.nixos.org"
+      extra-substituters = [
+        "https://nix-doom-emacs-unstraightened.cachix.org"
+        "https://numtide.cachix.org"
       ];
-      trusted-public-keys = lib.mkForce [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+
+      extra-trusted-public-keys = [
+        "nix-doom-emacs-unstraightened.cachix.org-1:1x23G3T3S2Y2T2Y2T2Y2T2Y2T2Y2T2Y2T2Y2T2Y2T2Y=" # placeholder format, see note below
+        "numtide.cachix.org-1:2ps1kLBUW3qMicqP8rBUe216APD06K/40/UAMiC30L8="
       ];
     };
     gc = {

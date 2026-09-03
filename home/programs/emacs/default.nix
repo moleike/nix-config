@@ -3,18 +3,18 @@
 {
   programs.doom-emacs = {
     enable = true;
-    doomdir = ./.doom.d;
-    doomlocaldir = "${config.xdg.datahome}/nix-doom";
+    doomDir = ./.doom.d;
+    doomLocalDir = "${config.xdg.dataHome}/nix-doom";
   };
 
   services.emacs.enable = false;
 
   home.packages = [
-    (pkgs.writeshellscriptbin "ec" ''
+    (pkgs.writeShellScriptBin "ec" ''
       exec ${pkgs.emacs}/bin/emacsclient -c -a "" "$@"
     '')
 
-    (pkgs.writeshellscriptbin "et" ''
+    (pkgs.writeShellScriptBin "et" ''
       exec ${pkgs.emacs}/bin/emacsclient -nw -a "" "$@"
     '')
   ];
