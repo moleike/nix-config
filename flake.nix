@@ -52,5 +52,7 @@
        }; in {
          ESM-Y3NWTMF3DL = configure "netquest" "aarch64-darwin";
        };
+
+    templates = import ./templates;
   };
 }
