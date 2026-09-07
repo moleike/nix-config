@@ -12,7 +12,6 @@ in
     home.packages = with pkgs; [
       coursier
       sbt
-      metals
       scala-cli
     ];
   };
