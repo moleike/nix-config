@@ -7,6 +7,8 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
     mac-app-util.url = "github:hraban/mac-app-util";
     llm-agents.url = "github:numtide/llm-agents.nix";
@@ -21,6 +23,7 @@
         modules = [
           ./homebrew
           ./hosts/${hostname}
+          sops-nix.darwinModules.sops
           mac-app-util.darwinModules.default
           home-manager.darwinModules.home-manager
           {
@@ -42,6 +45,7 @@
                 imports = [
                   ./home
                   ./hosts/${hostname}/home.nix
+                  sops-nix.homeManagerModules.sops
                   mac-app-util.homeManagerModules.default
                   nix-doom-emacs-unstraightened.hmModule
                 ];

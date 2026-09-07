@@ -25,6 +25,7 @@
     fontconfig
     pandoc
     hugo
+    sops
   ];
 
   # This value determines the Home Manager release that your
