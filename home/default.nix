@@ -17,8 +17,6 @@
     comma
     nix-index
     hyperfine
-    fira-code
-    fira-code-symbols
     tokei
     zstd
     ispell
