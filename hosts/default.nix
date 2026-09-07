@@ -21,7 +21,7 @@
     };
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
-      ApplePressAndHoldEnabled = false; # Enable key-repeat (essential for Vim/Emacs)
+      ApplePressAndHoldEnabled = false; # Enable press-and-hold for key accent menu
       InitialKeyRepeat = 14;            # Delay until repeat starts (15ms * 14)
       KeyRepeat = 1;                    # Fast repeat rate (15ms * 1)
       "com.apple.sound.beep.feedback" = 0;
@@ -46,13 +46,17 @@
       trusted-users = [ "root" "amoreno" ];
       extra-experimental-features = [ "nix-command" "flakes" ];
       extra-substituters = [
+        "https://nix-community.cachix.org"
         "https://nix-doom-emacs-unstraightened.cachix.org"
         "https://numtide.cachix.org"
+        "https://haskell-language-server.cachix.org"
       ];
 
       extra-trusted-public-keys = [
-        "nix-doom-emacs-unstraightened.cachix.org-1:1x23G3T3S2Y2T2Y2T2Y2T2Y2T2Y2T2Y2T2Y2T2Y2T2Y=" # placeholder format, see note below
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "doom-emacs-unstraightened.cachix.org-1:O5oOlRPnmQEvVaFyuMTmthCEooHbrg54WgSLR07tmg4="
         "numtide.cachix.org-1:2ps1kLBUW3qMicqP8rBUe216APD06K/40/UAMiC30L8="
+        "haskell-language-server.cachix.org-1:juFfHrwkOxqIOZShtC4YC1uT1bBcq2RSvC7OMKx0Nz8="
       ];
     };
     gc = {
