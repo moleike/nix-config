@@ -5,6 +5,12 @@
     enable = true;
     doomDir = ./.doom.d;
     doomLocalDir = "${config.xdg.dataHome}/nix-doom";
+    extraBinPackages = [
+      pkgs.direnv
+      pkgs.ripgrep
+      pkgs.fd
+      pkgs.git
+    ];
   };
 
   services.emacs.enable = false;
