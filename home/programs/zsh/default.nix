@@ -12,11 +12,6 @@
       save = 10000;
     };
     shellAliases = import ./aliases.nix;
-    oh-my-zsh = {
-      enable = true;
-      theme = "lambda";
-      plugins = [];
-    };
     sessionVariables = rec {
       EDITOR = "emacsclient -c";
       VISUAL = EDITOR;

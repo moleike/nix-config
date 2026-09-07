@@ -6,5 +6,6 @@
     ./emacs
     ./git
     ./direnv
+    ./starship
   ];
 }

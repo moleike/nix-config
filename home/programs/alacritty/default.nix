@@ -5,10 +5,10 @@ let
     rev = "14794c3cc2dc1b4649f8b9b79a8833d2ce5bfd60";
     sha256 = "mxmli6ZSm+90Jrwm9fju0sAstNZgBEx4hSaWigs6rWc=";
   };
-  afterglow = builtins.fromTOML (builtins.readFile "${theme}/themes/afterglow.toml");
-
+  doomOne = builtins.fromTOML (builtins.readFile "${theme}/themes/doom_one.toml");
+  font-family = "FiraCode Nerd Font";
   tmux-launcher = pkgs.writeShellScript "tmux-launcher" ''
-    exec ${pkgs.tmux}/bin/tmux attach 2>/dev/null || exec ${pkgs.tmux}/bin/tmux
+    exec ${pkgs.tmux}/bin/tmux new-session -A -s main
   '';
 in
 {
@@ -19,7 +19,7 @@ in
         live_config_reload = true;
       };
 
-      colors = afterglow.colors;
+      colors = doomOne.colors;
 
       terminal.shell.program = "${tmux-launcher}";
 
@@ -40,13 +40,13 @@ in
       font = {
         size = 18.0;
 
-        normal.family = "Fira Code";
+        normal.family = "${font-family}";
         normal.style = "Medium";
 
-        bold.family = "Fira Code";
+        bold.family = "${font-family}";
         bold.style = "Bold";
 
-        italic.family = "Fira Code";
+        italic.family = "${font-family}";
         italic.style = "Light Italic";
       };
     };
