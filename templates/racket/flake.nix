@@ -21,7 +21,6 @@
             export PATH="$PLTUSERHOME/bin:$PATH"
             
             if [ ! -d "$PLTUSERHOME" ]; then
-              echo "Initializing local Racket package layer..."
               raco pkg install --auto --batch racket-langserver
             fi
           '';
