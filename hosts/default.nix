@@ -47,6 +47,7 @@
       extra-experimental-features = [ "nix-command" "flakes" ];
       extra-substituters = [
         "https://nix-community.cachix.org"
+        "https://nix-darwin.cachix.org"
         "https://nix-doom-emacs-unstraightened.cachix.org"
         "https://numtide.cachix.org"
         "https://haskell-language-server.cachix.org"
@@ -54,6 +55,7 @@
 
       extra-trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "nix-darwin.cachix.org-1:LxMyKzQk7Uqkc1Pfq5uhm9GSn07xkERpy+7cpwc006A="
         "doom-emacs-unstraightened.cachix.org-1:O5oOlRPnmQEvVaFyuMTmthCEooHbrg54WgSLR07tmg4="
         "numtide.cachix.org-1:2ps1kLBUW3qMicqP8rBUe216APD06K/40/UAMiC30L8="
         "haskell-language-server.cachix.org-1:juFfHrwkOxqIOZShtC4YC1uT1bBcq2RSvC7OMKx0Nz8="
