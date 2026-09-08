@@ -51,6 +51,7 @@
         "https://nix-doom-emacs-unstraightened.cachix.org"
         "https://numtide.cachix.org"
         "https://haskell-language-server.cachix.org"
+        "https://lean4.cachix.org"
       ];
 
       extra-trusted-public-keys = [
@@ -59,6 +60,7 @@
         "doom-emacs-unstraightened.cachix.org-1:O5oOlRPnmQEvVaFyuMTmthCEooHbrg54WgSLR07tmg4="
         "numtide.cachix.org-1:2ps1kLBUW3qMicqP8rBUe216APD06K/40/UAMiC30L8="
         "haskell-language-server.cachix.org-1:juFfHrwkOxqIOZShtC4YC1uT1bBcq2RSvC7OMKx0Nz8="
+        "lean4.cachix.org-1:mawtxSxcaiWE24xCXXgh3qnvlTkyU7evRRnGeAhD4Wk="
       ];
     };
     gc = {

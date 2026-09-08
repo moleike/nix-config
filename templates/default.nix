@@ -13,4 +13,9 @@
     path = ./racket;
     description = "racket environment";
   };
+
+  lean = {
+    path = ./lean;
+    description = "lean environment";
+  };
 }

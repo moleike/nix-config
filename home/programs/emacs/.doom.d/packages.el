@@ -7,9 +7,9 @@
 
 (package! lean4-mode
   :recipe (:host github
-           :repo "leanprover-community/lean4-mode"
+           :repo "bustercopley/lean4-mode"
            :files ("*.el" "data"))
-  :pin "1388f9d1429e38a39ab913c6daae55f6ce799479")
+  :pin "a56415e95c5bd267260d7b32c5246f0a23aff6b2")
 
 (package! remark-mode
   :recipe (:host github
